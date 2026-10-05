@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexUI | El futuro del Diseño Web</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+        }
+
+        /* Animación para el indicador de scroll */
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<!-- Quitamos 'overflow-hidden' del body para permitir scroll -->
+<body class="m-0 p-0 text-white bg-[#050505] overflow-x-hidden selection:bg-indigo-500/30">
+
+    <!-- ====== CAPA 0: Red de Partículas Interactiva (Fija al fondo) ====== -->
+    <canvas id="particle-canvas" class="fixed top-0 left-0 w-screen h-screen z-0 bg-[#050505] pointer-events-none"></canvas>
+
+    <!-- ====== CAPA 10: El Contenido (El Cristal) ====== -->
+    <div class="relative z-10 w-full bg-transparent flex flex-col pointer-events-none">
+        
+        <!-- NAVBAR -->
+        <nav class="fixed top-0 w-full z-50 bg-[#050505]/60 backdrop-blur-xl border-b border-white/10 pointer-events-auto transition-all duration-500">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tight">NexUI</span>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-10 text-sm font-medium text-gray-400">
+                    <a href="#caracteristicas" class="hover:text-white transition-colors">Características</a>
+                    <a href="#" class="hover:text-white transition-colors">Plantillas</a>
+                    <a href="#" class="hover:text-white transition-colors">Precios</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors hidden sm:block">Login</a>
+                    <a href="/dashboard/" class="px-6 py-2.5 rounded-full bg-white text-black hover:bg-gray-200 hover:scale-105 text-sm font-bold shadow-lg transition-all">
+                        Probar IA
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <main class="w-full min-h-screen flex flex-col items-center justify-center px-6 text-center pt-20 relative">
+            
+            <div data-aos="fade-down" data-aos-delay="100" class="mb-10 pointer-events-auto mt-12">
+                <div class="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-semibold text-purple-300 backdrop-blur-2xl shadow-lg flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_10px_rgba(99,102,241,0.8)]"></span>
+                    Diseño impulsado por IA v2.0
+                </div>
+            </div>
+
+            <h1 data-aos="fade-up" data-aos-delay="300" class="text-7xl md:text-9xl font-extrabold tracking-tighter mb-8 leading-tight drop-shadow-2xl text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500">
+                El futuro del <br> Diseño Web.
+            </h1>
+
+            <p data-aos="fade-up" data-aos-delay="500" class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl font-light leading-relaxed drop-shadow-md">
+                Despliega sitios impresionantes con la velocidad del pensamiento. Una plataforma tecnológica que programa, optimiza y publica por ti.
+            </p>
+
+            <div data-aos="zoom-in" data-aos-delay="700" class="flex flex-col sm:flex-row items-center gap-6 pointer-events-auto">
+                <a href="/dashboard/" class="px-10 py-5 rounded-full font-bold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:scale-105 transition-transform shadow-[0_0_30px_rgba(168,85,247,0.5)] flex items-center gap-3 text-lg">
+                    Empezar gratis
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+                <a href="#caracteristicas" class="px-10 py-5 rounded-full font-semibold text-gray-300 bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center gap-3 backdrop-blur-md text-lg">
+                    Descubrir magia
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div data-aos="fade-up" data-aos-delay="1000" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 pointer-events-auto opacity-60 hover:opacity-100 transition-opacity">
+                <a href="#caracteristicas" class="flex flex-col items-center gap-2 text-gray-400">
+                    <span class="text-xs uppercase tracking-widest font-semibold">Scroll</span>
+                    <svg class="w-6 h-6 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </main>
+
+        <!-- FEATURES SECTION (NUEVO CONTENIDO PARA SCROLLEAR) -->
+        <section id="caracteristicas" class="w-full min-h-screen py-32 px-6 pointer-events-auto relative z-10 bg-gradient-to-b from-transparent to-[#050505]">
+            <div class="max-w-7xl mx-auto">
+                
+                <div class="text-center mb-24" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Arquitectura Impecable.</h2>
+                    <p class="text-xl text-gray-400 font-light max-w-2xl mx-auto">Construimos sobre las tecnologías más rápidas y modernas para que tu web vuele.</p>
+                </div>
+
+                <!-- Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                    
+                    <!-- Card 1 (Ancha) -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="md:col-span-2 bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-10 flex flex-col justify-end relative overflow-hidden group hover:border-purple-500/50 transition-colors">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] group-hover:bg-purple-500/20 transition-colors"></div>
+                        <h3 class="text-3xl font-semibold mb-3">Motor de IA Generativo</h3>
+                        <p class="text-gray-400 text-lg font-light max-w-md">No son plantillas. Cada línea de código es generada en tiempo real según tus instrucciones exactas por nuestro modelo afinado.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-10 flex flex-col justify-end relative overflow-hidden group hover:border-cyan-500/50 transition-colors">
+                        <div class="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-[50px] group-hover:bg-cyan-500/20 transition-colors"></div>
+                        <div class="text-5xl mb-6">⚡</div>
+                        <h3 class="text-2xl font-semibold mb-2">Velocidad Extrema</h3>
+                        <p class="text-gray-400 font-light">Código HTML/Tailwind puro. Cero bloatware.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div data-aos="fade-up" data-aos-delay="300" class="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-10 flex flex-col justify-end relative overflow-hidden group hover:border-pink-500/50 transition-colors">
+                        <div class="absolute bottom-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-[50px] group-hover:bg-pink-500/20 transition-colors"></div>
+                        <div class="text-5xl mb-6">🎨</div>
+                        <h3 class="text-2xl font-semibold mb-2">Editor Visual Libre</h3>
+                        <p class="text-gray-400 font-light">Modifica cada píxel en un canvas tipo Figma integrado.</p>
+                    </div>
+
+                    <!-- Card 4 (Ancha) -->
+                    <div data-aos="fade-up" data-aos-delay="400" class="md:col-span-2 bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-10 flex flex-col justify-end relative overflow-hidden group hover:border-indigo-500/50 transition-colors">
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-indigo-500/5 rounded-full blur-[100px] group-hover:bg-indigo-500/10 transition-colors"></div>
+                        <h3 class="text-3xl font-semibold mb-3">Deploy en 1 Clic</h3>
+                        <p class="text-gray-400 text-lg font-light max-w-md">De la idea a producción. Exporta tu código o publícalo instantáneamente en nuestra infraestructura global.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="w-full border-t border-white/10 bg-[#050505] pt-16 pb-8 pointer-events-auto">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <span class="font-bold tracking-tight">NexUI 2026</span>
+                </div>
+                <div class="text-sm text-gray-500 font-light">
+                    Construido para el futuro del diseño.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ====== SCRIPTS EXTERNOS ====== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
+    </script>
+
+    <!-- ====== MOTOR 3D: RED DE PARTÍCULAS ====== -->
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 120; // Reducido ligeramente para mayor limpieza en scroll
+        let mouse = { x: null, y: null, radius: 180 };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+            createParticles();
+        });
+
+        // Eventos para la interacción del mouse
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                
+                const colors = ['#a855f7', '#06b6d4', '#ffffff', '#8b5cf6'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+
+                if (mouse.x !== null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius) {
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let maxDistance = mouse.radius;
+                        let force = (maxDistance - distance) / maxDistance;
+                        let directionX = forceDirectionX * force * this.density;
+                        let directionY = forceDirectionY * force * this.density;
+
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        let opacity = 1 - (distance / 120);
+                        ctx.strokeStyle = `rgba(139, 92, 246, ${opacity * 0.4})`; 
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        initCanvas();
+        createParticles();
+        animate();
+    </script>
+</body>
+</html>
